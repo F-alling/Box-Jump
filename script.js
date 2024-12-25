@@ -5,7 +5,7 @@ document.body.appendChild(canvas);
 canvas.width = 800;
 canvas.height = 400;
 
-let box = { x: 50, y: 300, width: 20, height: 20, dy: 0, onGround: true };
+let box = { x: 50, y: 300, width: 20, height: 20, dy: 5, onGround: true };
 let obstacles = [];
 let score = 0;
 let gameSpeed = 3;
