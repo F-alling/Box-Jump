@@ -61,12 +61,13 @@ function createObstacle() {
 }
 
 function slowdown() {
-  gamespeed--; // slow down?
+  gameSpeed = Math.max(1, gameSpeed - 1); // Prevent speed from dropping below 1
 }
 
 function speedup() {
-  gamespeed++; // speed up?
+  gameSpeed++; // No upper limit, adjust if necessary
 }
+
 
 function drawBox() {
   ctx.fillStyle = 'white';
