@@ -14,6 +14,24 @@ canvas {
   display: block;
 }
 
+#turnitdown{
+    top: 10px;
+    padding: 30px;
+    margin: auto;
+    width: 40px;
+    background-color: white;
+    position: relative;
+}
+
+#turnitup{
+    top: 10px;
+    padding: 30px;
+    margin: auto;
+    width: 40px;
+    background-color: white;
+    position: relative;
+}
+
 .revnumc {
   position: absolute;
   bottom: 10px; 
