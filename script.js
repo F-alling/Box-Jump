@@ -60,7 +60,7 @@ function fetchRevisions() {
 
 // Function to create obstacles with random colors and increased spacing (5x more)
 function createObstacle() {
-    const gap = Math.random() * 400 + 9999; // Increase spacing between obstacles by 5x
+    const gap = Math.random() * 1.2 + 9; // Increase spacing between obstacles by 5x
     obstacles.push({ 
         x: canvas.width, 
         y: 300, 
