@@ -14,7 +14,7 @@ canvas {
   display: block;
 }
 
-#turnitdown{
+.turnitdown{
     bottom: 5px;
     padding: 4px;
     margin: auto;
@@ -23,7 +23,7 @@ canvas {
     position: relative;
 }
 
-#turnitup{
+.turnitup{
     bottom: 5px;
     padding: 4px;
     margin: auto;
