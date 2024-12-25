@@ -1,34 +1,6 @@
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d');
-document.body.appendChild(canvas);
-
-canvas.width = 800;
-canvas.height = 400;
-
-let box = { x: 50, y: 300, width: 20, height: 20, dy: 5, onGround: true };
-let obstacles = [];
-let score = 0;
-let gameSpeed = 3;
-let isGameOver = false;
-let gameStarted = false;
-let pubrevnum = 0;
-
-let obstacleInterval = 2000; // Time in milliseconds between obstacles
-let lastObstacleTime = 0; // Tracks the last time an obstacle was created
-
-function fetchRevisions() {
-    const owner = "0689436";
-    const repo = "pong";
-    const branch = "main"; // Replace with your branch name
-    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/commits?sha=${branch}&per_page=1`;
-
-    fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
                 throw new Error(`GitHub API returned an error: ${response.status}`);
             }
 
-            // Get the 'Link' header to determine pagination
             const linkHeader = response.headers.get("Link");
             let totalCommits;
 
@@ -39,17 +11,15 @@ function fetchRevisions() {
                 }
             }
 
-            // If not paginated (only 1 page), get the number of results
             return response.json().then(data => totalCommits || data.length);
         })
         .then(totalCommits => {
             pubrevnum = totalCommits;
             console.log("Total Commits:", pubrevnum);
 
-            // Update the displayed revision number
             const pubRevNumDisplay = document.getElementById("pubrevnum");
             if (pubRevNumDisplay) {
-                pubRevNumDisplay.textContent = pubrevnum; // Set only the revision number
+                pubRevNumDisplay.textContent = pubrevnum;
             }
         })
         .catch(error => {
@@ -58,7 +28,6 @@ function fetchRevisions() {
 }
 
 function createObstacle() {
-    const gap = Math.random() * 100 + 200; // Randomize spacing between obstacles
     obstacles.push({ x: canvas.width, y: 300, size: 20 });
 }
 
@@ -79,9 +48,9 @@ function drawObstacles() {
     ctx.fillStyle = 'white';
     obstacles.forEach(ob => {
         ctx.beginPath();
-        ctx.moveTo(ob.x, ob.y); // Top point of the triangle
-        ctx.lineTo(ob.x + ob.size, ob.y + ob.size); // Bottom-right
-        ctx.lineTo(ob.x - ob.size, ob.y + ob.size); // Bottom-left
+        ctx.moveTo(ob.x, ob.y);
+        ctx.lineTo(ob.x + ob.size, ob.y + ob.size);
+        ctx.lineTo(ob.x - ob.size, ob.y + ob.size);
         ctx.closePath();
         ctx.fill();
     });
@@ -136,6 +105,7 @@ function restartGame() {
     isGameOver = false;
     gameStarted = false;
     gameSpeed = 3;
+    lastObstacleTime = 0;
 }
 
 function gameLoop(timestamp) {
@@ -143,10 +113,13 @@ function gameLoop(timestamp) {
 
     if (!isGameOver) {
         if (gameStarted) {
-            // Spawn obstacles at consistent intervals
+            // Adjust obstacle interval based on gameSpeed
+            const obstacleInterval = baseObstacleInterval / (1.4 * gameSpeed);
+
+            // Spawn obstacles at the adjusted interval
             if (timestamp - lastObstacleTime >= obstacleInterval) {
                 createObstacle();
-                lastObstacleTime = timestamp; // Update the last spawn time
+                lastObstacleTime = timestamp;
             }
 
             // Update box position with gravity
