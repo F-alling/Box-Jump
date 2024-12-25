@@ -94,6 +94,7 @@ function drawScore() {
   ctx.fillStyle = 'white';
   ctx.font = '20px Arial';
   ctx.fillText(`Score: ${score}`, 20, 30);
+  ctx.fillText(`Speed: ${gameSpeed}`, 20, 60); // Display current speed
 }
 
 function checkCollision() {
