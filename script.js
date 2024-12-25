@@ -170,3 +170,5 @@ window.addEventListener('keydown', e => {
 });
 
 gameLoop();
+
+fetchRevisions();
