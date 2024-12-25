@@ -21,8 +21,8 @@ let lastObstacleTime = 0; // Tracks the last time an obstacle was created
 
 // Function to fetch revisions (optional, can be removed if not needed)
 function fetchRevisions() {
-    const owner = "0689436";
-    const repo = "pong";
+    const owner = "f-alling";
+    const repo = "box-jump";
     const branch = "main"; // Replace with your branch name
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/commits?sha=${branch}&per_page=1`;
 
@@ -58,9 +58,15 @@ function fetchRevisions() {
         });
 }
 
-// Function to create obstacles
+// Function to create obstacles with random colors and increased spacing
 function createObstacle() {
-    obstacles.push({ x: canvas.width, y: 300, size: 20 });
+    const gap = Math.random() * 100 + 600; // Randomize spacing between obstacles (300% more)
+    obstacles.push({ 
+        x: canvas.width, 
+        y: 300, 
+        size: 20,
+        color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` // Random color
+    });
 }
 
 // Function to slow down the game speed
@@ -79,10 +85,10 @@ function drawBox() {
     ctx.fillRect(box.x, box.y, box.width, box.height);
 }
 
-// Function to draw obstacles
+// Function to draw obstacles with random colors
 function drawObstacles() {
-    ctx.fillStyle = 'white';
     obstacles.forEach(ob => {
+        ctx.fillStyle = ob.color; // Set the random color for each obstacle
         ctx.beginPath();
         ctx.moveTo(ob.x, ob.y);
         ctx.lineTo(ob.x + ob.size, ob.y + ob.size);
