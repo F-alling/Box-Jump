@@ -13,3 +13,40 @@ canvas {
   background: black;
   display: block;
 }
+
+.revnumc {
+  position: absolute;
+  bottom: 10px; 
+  font-weight: normal;
+  font-size: 6px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.repo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 1rem;
+  color: var(--text-color);
+
+}
+
+.repo a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.footer {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1rem;
+  color: var(--text-color);
+
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--text-color);
+}
