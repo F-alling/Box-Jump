@@ -90,7 +90,7 @@ function drawObstacles() {
     obstacles.forEach(ob => {
         ctx.fillStyle = ob.color; // Set the random color for each obstacle
         ctx.beginPath();
-        ctx.moveTo(ob.x, ob.y);
+        ctx.moveTo(ob.x, gap.y);
         ctx.lineTo(ob.x + ob.size, ob.y + ob.size);
         ctx.lineTo(ob.x - ob.size, ob.y + ob.size);
         ctx.closePath();
