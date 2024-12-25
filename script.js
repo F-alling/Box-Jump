@@ -21,8 +21,8 @@ let lastObstacleTime = 0; // Tracks the last time an obstacle was created
 
 // Function to fetch revisions (optional, can be removed if not needed)
 function fetchRevisions() {
-    const owner = "f-alling";
-    const repo = "box-jump";
+    const owner = "0689436";
+    const repo = "pong";
     const branch = "main"; // Replace with your branch name
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/commits?sha=${branch}&per_page=1`;
 
@@ -58,9 +58,9 @@ function fetchRevisions() {
         });
 }
 
-// Function to create obstacles with random colors and increased spacing
+// Function to create obstacles with random colors and increased spacing (5x more)
 function createObstacle() {
-    const gap = Math.random() * 100 + 600; // Randomize spacing between obstacles (300% more)
+    const gap = Math.random() * 100 + 1000; // Increase spacing between obstacles by 5x
     obstacles.push({ 
         x: canvas.width, 
         y: 300, 
