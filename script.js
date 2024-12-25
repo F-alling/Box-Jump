@@ -61,11 +61,11 @@ function createObstacle() {
 }
 
 function slowdown() {
-  const gamespeed = gamespeed-- // slow down?
+  const gamespeed = --gamespeed; // slow down?
 }
 
 function speedup() {
-  const gamespeed = gamespeed++; // speed up?
+  const gamespeed = ++gamespeed; // speed up?
 }
 
 function drawBox() {
