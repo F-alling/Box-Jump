@@ -60,6 +60,14 @@ function createObstacle() {
   obstacles.push({ x: canvas.width, y: 300, size: 20 });
 }
 
+function slowdown() {
+  const gamespeed = gamespeed-- // slow down?
+}
+
+function speedup() {
+  const gamespeed = gamespeed++; // speed up?
+}
+
 function drawBox() {
   ctx.fillStyle = 'white';
   ctx.fillRect(box.x, box.y, box.width, box.height);
